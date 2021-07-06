@@ -1,0 +1,54 @@
+﻿<Window x:Class="WpfApp1.MasterCdWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="MasterCdWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGrid"
+                  ItemsSource="{Binding Data, Mode=OneWay}"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  MouseDoubleClick="DataGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Kode CD" Binding="{Binding Kodecd}" />
+                <DataGridTextColumn Header="Judul" Binding="{Binding Judulcd}" />
+                <DataGridTextColumn Header="Harga" Binding="{Binding Hrgsewa}" />
+                <DataGridTextColumn Header="Lama Sewa" Binding="{Binding Lamasw}" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                <DataGridTemplateColumn Header="Action">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Click="DeleteButton_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border Grid.Column="1" Padding="8">
+            <StackPanel>
+                <TextBlock Text="Kode CD" />
+                <TextBox x:Name="txtKodecd" />
+                <TextBlock Text="Judul" />
+                <TextBox x:Name="txtJudulcd" />
+                <TextBlock Text="Harga Sewa" />
+                <TextBox x:Name="txtHrgsewa" />
+                <TextBlock Text="Lama Sewa" />
+                <TextBox x:Name="txtLamasw" />
+                <TextBlock Text="Status" />
+                <RadioButton x:Name="cbStatusB" Content="B" GroupName="cbStatus" />
+                <RadioButton x:Name="cbStatusR" Content="R" GroupName="cbStatus" />
+                <RadioButton x:Name="cbStatusH" Content="H" GroupName="cbStatus" />
+                <Button Content="Insert" Click="InsertButton_Click" />
+                <Button Content="Update" Click="UpdateButton_Click" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
